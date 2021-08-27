@@ -1,21 +1,21 @@
 {
-  "UserTableScript": "",
-  "UserProfileTableScript": "",
-  "NewsTableScript":"",
-  "ReminderTableScript":"",
-  "InsertScripts":{
-    "User":"",
-    "UserProfile":"",
-    "News":"",
-    "Reminder":""
+  "UserTableScript": "create table users(UserId varchar(20) primary key, Password varchar(20))",
+  "UserProfileTableScript": "create table UserProfile(UserId varchar(20) references Users(UserId), FirstName varchar(20), LastName varchar(20), Contact char(10),Email varchar(max),CreatedAt DateTime default GetDate())",
+  "NewsTableScript": "create Table News (NewsId int primary Key, Title varchar(max), Content varchar(max), PublishedAt DateTime , CreatedBy varchar(20) references Users(UserId), Url varchar(max), UrlToImage varchar(max) )",
+  "ReminderTableScript": " create table Reminders(ReminderId int primary key, ScaheduleAt DateTime, NewsId int references News(NewsId))",
+  "InsertScripts": {
+    "User": "insert into users values('Jack','Pass123'),('John','Pass13'),('kevin','test@123')",
+    "UserProfile": "insert into UserProfile values('Jack','Jackson','James', '9876789876','James@gmail.com',GetDate()),('John','Johnson','James','9876789876','Jonnson@gmail.com',GetDate()),('kevin','Kevin','James','9876789876','Kevin@gmail.com',GetDate())",
+    "News": "insert into News values(101, 'Title1' ,'This is for title1', '12/12/2020', 'kevin',NULL, NULL),(102,'Title2','This is for title2','11/10/2019','kevin',NULL,NULL),(103,'Title3','This is for title3','10/08/2017','John', NULL, NULL), (104,'Title4','This is for title4','09/12/2020','Jack', NULL, NULL)",
+    "Reminder": "insert into Reminders values(1, '12/12/2021', 101), (2,'12/12/2021',102), (3,'10/10/2021',103)"
   },
-  "Query1":"",
-  "Query2":"",
-  "Query3":"",
-  "Query4":"",
-  "Query5":"",
-  "Query6":"",
-  "Query7":"",
-  "Query8":"",
-  "Query9":""
+  "Query1": "",
+  "Query2": "",
+  "Query3": "",
+  "Query4": "",
+  "Query5": "",
+  "Query6": "",
+  "Query7": "",
+  "Query8": "",
+  "Query9": ""
 }
